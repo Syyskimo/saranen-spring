@@ -28,6 +28,7 @@ public class PersonController {
      * @param weight paino
      * @return
      */
+    @CrossOrigin("*")
     @GetMapping(path = "/person/create", produces= MediaType.APPLICATION_JSON_VALUE)
     public Person create(@RequestParam(name = "female") boolean female,
                         @RequestParam(name = "weight") double weight) {
@@ -44,6 +45,7 @@ public class PersonController {
      * @param uuid henkilön id
      * @return palauttaa henkilön (tai heittää 404, jos ei löydy moista)
      */
+    @CrossOrigin("*")
     @GetMapping(path ="/person/{uuid}", produces= MediaType.APPLICATION_JSON_VALUE)
     public Person getPerson(@PathVariable String uuid) {
         return this.personService.getPerson(uuid).orElseThrow(() -> new PersonNotFoundException("Unknown person"));
@@ -59,6 +61,7 @@ public class PersonController {
      * @param weight paino
      * @return päivitetyn persoonan tahi 404, jos ei moista löydy
      */
+    @CrossOrigin("*")
     @GetMapping(path ="/person/{uuid}/update", produces= MediaType.APPLICATION_JSON_VALUE)
     public Person updatePerson(@PathVariable String uuid,
                                @RequestParam(name = "female") boolean female,
@@ -82,6 +85,7 @@ public class PersonController {
      * @param volume koko (litroissa)
      * @return Palauttaa persoonen juomineen päivineen
      */
+    @CrossOrigin("*")
     @GetMapping(path ="/person/{uuid}/drink", produces= MediaType.APPLICATION_JSON_VALUE)
     public Person drink(@PathVariable String uuid,
                                @RequestParam(name = "alcvol") double alcVol,
@@ -104,6 +108,7 @@ public class PersonController {
      * @param drinkId juoman id
      * @return henkilö juomineen päivineen
      */
+    @CrossOrigin("*")
     @GetMapping(path ="/person/{uuid}/undrink/{drinkId}", produces= MediaType.APPLICATION_JSON_VALUE)
     public Person removeDrink(@PathVariable String uuid,
                               @PathVariable String drinkId) {
