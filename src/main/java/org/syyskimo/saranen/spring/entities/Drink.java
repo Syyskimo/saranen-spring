@@ -1,6 +1,7 @@
 package org.syyskimo.saranen.spring.entities;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 public class Drink implements Comparable<Drink> {
@@ -28,6 +29,18 @@ public class Drink implements Comparable<Drink> {
     public double getAlc()
     {
         return (this.vol * (this.alcVol / 100.0));
+    }
+
+    public double getAlcVol() {
+        return this.alcVol;
+    }
+
+    public double getVolume() {
+        return this.vol;
+    }
+
+    public long getSecondsSince() {
+        return (ChronoUnit.SECONDS.between(this.drinkingMoment, LocalDateTime.now()));
     }
 
     public double getShotAmount()

@@ -184,6 +184,15 @@ public class Person {
         return this.drinks.values().stream().sorted().collect(Collectors.toList());
     }
 
+    public long getDrinkingSeconds() {
+        List<Drink> drinkList = this.getDrinks();
+        return (drinkList.size() > 0 ? drinkList.get(0).getSecondsSince() : 0);
+    }
+
+    public double getPromile() {
+        return this.getPromile(getDrinkingSeconds() / (3600.0));
+    }
+
     public void removeDrink(String drinkUuid) {
         this.drinks.remove(drinkUuid);
     }
